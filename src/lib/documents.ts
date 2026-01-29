@@ -3,8 +3,10 @@ import path from 'path';
 import matter from 'gray-matter';
 import { glob } from 'glob';
 
-// Path to the brain folder
-const BRAIN_PATH = process.env.BRAIN_PATH || path.join(process.env.HOME || '/home/elliotbot', 'clawd', 'brain');
+// Path to the brain folder - use repo-local brain/ in production (Vercel), or custom path
+const BRAIN_PATH = process.env.BRAIN_PATH || 
+  (process.env.VERCEL ? path.join(process.cwd(), 'brain') : 
+   path.join(process.env.HOME || '/home/elliotbot', 'clawd', 'brain'));
 
 export interface DocumentMeta {
   slug: string;
