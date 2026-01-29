@@ -2,26 +2,226 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1a1a1a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Syntax highlighting theme (GitHub Dark) */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+.hljs {
+  color: #c9d1d9;
+  background: #141414;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: #ff7b72;
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: #d2a8ff;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: #79c0ff;
+}
+
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #a5d6ff;
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  color: #ffa657;
+}
+
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+  color: #8b949e;
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+  color: #7ee787;
+}
+
+.hljs-subst {
+  color: #c9d1d9;
+}
+
+.hljs-section {
+  color: #1f6feb;
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  color: #f2cc60;
+}
+
+.hljs-emphasis {
+  color: #c9d1d9;
+  font-style: italic;
+}
+
+.hljs-strong {
+  color: #c9d1d9;
+  font-weight: bold;
+}
+
+.hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+
+.hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+
+/* Wiki-style links */
+.wiki-link {
+  color: #5e5ce6;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(94, 92, 230, 0.5);
+  transition: all 0.15s ease;
+}
+
+.wiki-link:hover {
+  border-bottom-color: #5e5ce6;
+}
+
+/* Prose adjustments */
+.prose pre {
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+}
+
+.prose code:not(pre code) {
+  background: #1a1a1a;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #2a2a2a;
+  padding: 0.75rem 1rem;
+}
+
+.prose th {
+  background: #1a1a1a;
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 3px solid #5e5ce6;
+  background: rgba(94, 92, 230, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Backlinks section */
+.backlinks {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 3rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+  .prose {
+    font-size: 0.95rem;
+  }
+  
+  .prose pre {
+    font-size: 0.85rem;
   }
 }
